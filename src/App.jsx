@@ -54,7 +54,7 @@ const projects = [
     title: "Student Data Base Management System",
     description:
       "It is a centralized software platform designed to securely store, track, and manage all information related to a student's and Guardian/Parents, with an admin dashboard that can access the student information and modify it anytime ",
-    tags: ["vite", "Css", "Firestor, Firebase auth"],
+    tags: ["vite", "Css", "Firestore, Firebase auth"],
     link: "https://earnest-haupia-783137.netlify.app/",
     githubLink: "https://github.com/Aghahowa22/School_DB.git",
   },
