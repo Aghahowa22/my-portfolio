@@ -5,7 +5,7 @@ const projects = [
   {
     title: "Real time currency converter",
     description:
-      "A real-time currency converter built with Html, css and javascript, it gives instant up-to-date exchange rates for multiple world currencies. the application fetches data from a reliable financial API to display current rates as they fluctuate in global foreign exchange markets.",
+      "A real-time currency converter web app built with Html, css and javascript, it gives instant up-to-date exchange rates for multiple world currencies. the application fetches data from a reliable financial API to display current rates as they fluctuate in global foreign exchange markets.",
     tags: ["Html", "Css", "Javascript, API Integration"],
     link: "https://lucky-kataifi-725a98.netlify.app/",
     githubLink:
@@ -14,7 +14,7 @@ const projects = [
   {
     title: "Github User Search Engine",
     description:
-      "A simple app to search for Github users and display links to their profiles, number of repositories, and followers.",
+      "A simple web app to search for Github users and display links to their profiles, number of repositories, and followers.",
     tags: ["React.Js", "API Integration", "Vite"],
     link: "https://effervescent-flan-f5b516.netlify.app/",
     githubLink:
@@ -23,7 +23,7 @@ const projects = [
   {
     title: "Quick Notes",
     description:
-      "Real-time note-taking app with a clean interface and seamless synchronization that allows users to create accounts, track and jot down their ideals and daily activities, using firebase as authentication and database.",
+      "Real-time note-taking web app with a clean interface and seamless synchronization that allows users to create accounts, track and jot down their ideals and daily activities, using firebase as authentication and database.",
     tags: ["Vite", "Tailwind", "Firebase Auth & Firestore"],
     link: "https://dazzling-cocada-0283fa.netlify.app/",
     githubLink: "https://github.com/Aghahowa22/Quick_note.git",
@@ -31,7 +31,7 @@ const projects = [
   {
     title: "Nigerian PAYE Tax Calculator",
     description:
-      "A simple app to calculate Nigerian tax PAYE based on user input, user income, user income deductions, and current tax rates. the web application allows users to create accounts or sign in useing google authentication, and it also stores the user data in firebase firestore database.",
+      "A simple web app to calculate Nigerian tax PAYE based on user input, user income, user income deductions, and current tax rates. the web application allows users to create accounts or sign in using google authentication, and it also stores the user data in firebase firestore database.",
     tags: ["Vite", "Tailwind", "Firebase", "Google Auth & Firestore"],
     link: "https://taxpalprojects.netlify.app/",
     githubLink: "https://github.com/Aghahowa22/Yuki-project.git",
@@ -51,12 +51,12 @@ const projects = [
     githubLink: "https://github.com/Aghahowa22/learn-flow.git",
   },
   {
-    title: "Simple Interest Calculator",
+    title: "Student Data Base Management System",
     description:
-      "A simple app to calculate simple interest based on user input, including principal amount, rate of interest, and time period. The application provides an intuitive interface for users to enter their details and view the calculated interest.",
-    tags: ["Html", "Css", "Javascript"],
-    link: "https://beamish-vacherin-823da1.netlify.app/",
-    githubLink: "https://github.com/Aghahowa22/simple_interest_calculator.git",
+      "It is a centralized software platform designed to securely store, track, and manage all information related to a student's and Guardian/Parents, with an admin dashboard that can access the student information and modify it anytime ",
+    tags: ["vite", "Css", "Firestor, Firebase auth"],
+    link: "https://earnest-haupia-783137.netlify.app/",
+    githubLink: "https://github.com/Aghahowa22/School_DB.git",
   },
 ];
 
