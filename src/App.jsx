@@ -1,5 +1,5 @@
 import "./App.css";
-import { ArrowRight, ExternalLink,  Mail, Sparkles,  } from "lucide-react";
+import { ArrowRight, ExternalLink, Mail, Sparkles } from "lucide-react";
 
 const projects = [
   {
@@ -7,6 +7,8 @@ const projects = [
     description:
       "A real-time currency converter web app built with Html, css and javascript, it gives instant up-to-date exchange rates for multiple world currencies. the application fetches data from a reliable financial API to display current rates as they fluctuate in global foreign exchange markets.",
     tags: ["Html", "Css", "Javascript, API Integration"],
+    image:
+      "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
     link: "https://lucky-kataifi-725a98.netlify.app/",
     githubLink:
       "https://github.com/Aghahowa22/crypto_currency_converter_landing_page.git",
@@ -16,6 +18,8 @@ const projects = [
     description:
       "A simple web app to search for Github users and display links to their profiles, number of repositories, and followers.",
     tags: ["React.Js", "API Integration", "Vite"],
+    image:
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
     link: "https://effervescent-flan-f5b516.netlify.app/",
     githubLink:
       "https://github.com/Aghahowa22/Github_user_search_Engine-using-reactjs.git",
@@ -25,6 +29,8 @@ const projects = [
     description:
       "Real-time note-taking web app with a clean interface and seamless synchronization that allows users to create accounts, track and jot down their ideals and daily activities, using firebase as authentication and database.",
     tags: ["Vite", "Tailwind", "Firebase Auth & Firestore"],
+    image:
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80",
     link: "https://dazzling-cocada-0283fa.netlify.app/",
     githubLink: "https://github.com/Aghahowa22/Quick_note.git",
   },
@@ -33,6 +39,8 @@ const projects = [
     description:
       "A simple web app to calculate Nigerian tax PAYE based on user input, user income, user income deductions, and current tax rates. the web application allows users to create accounts or sign in using google authentication, and it also stores the user data in firebase firestore database.",
     tags: ["Vite", "Tailwind", "Firebase", "Google Auth & Firestore"],
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
     link: "https://taxpalprojects.netlify.app/",
     githubLink: "https://github.com/Aghahowa22/Yuki-project.git",
   },
@@ -47,16 +55,30 @@ const projects = [
       "Google Auth & Firestore",
       "Supabase storage",
     ],
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
     link: "https://spectacular-sherbet-2244f4.netlify.app/",
     githubLink: "https://github.com/Aghahowa22/learn-flow.git",
   },
   {
-    title: "Student Data Base Management System",
+    title: "Student Registration Data System",
     description:
       "It is a centralized software platform designed to securely store, track, and manage all information related to a student's and Guardian/Parents, with an admin dashboard that can access the student information and modify it anytime ",
     tags: ["vite", "Css", "Firestore, Firebase auth"],
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
     link: "https://earnest-haupia-783137.netlify.app/",
     githubLink: "https://github.com/Aghahowa22/School_DB.git",
+  },
+  {
+    title: "ledgerlite {Internship Project}",
+    description:
+      "It is a centralized software platform designed for small and medium, businesses to help track sales, expenses, inventory and export your data as a simple pdf document",
+    tags: ["NextJS", "Typescript", "Tailwind", " authentication", "PostgreSQL"],
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    link: "https://orange-circle-internship-project2-g-eosin.vercel.app/",
+    githubLink: "https://github.com/Aghahowa22/Ledgerlite.git",
   },
 ];
 
@@ -67,17 +89,30 @@ function App() {
         <header className="flex flex-col gap-6 rounded-4xl border border-slate-800 bg-slate-900/90 p-8 shadow-xl shadow-slate-950/40 lg:p-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-2xl">
-              <p className="text-sm uppercase tracking-[0.35em] text-cyan-300/75">
+              <p className=" text-sm uppercase tracking-[0.35em] text-cyan-300/75">
                 Front End Developer
               </p>
               <h1 className="mt-3 text-5xl font-semibold tracking-tight text-white sm:text-6xl">
                 Modern interfaces that feel fast, intuitive, and polished.
               </h1>
-              <p className="mt-4 max-w-xl text-lg leading-8 text-slate-300">
+              <p className=" mt-4 max-w-xl text-lg leading-8 text-slate-300">
                 I build high-performance web experiences with React and
                 Tailwind, focusing on clean design, reliable architecture, and
                 delightful interactions.
               </p>
+            </div>
+
+            <div className="hidden flex-1 lg:block">
+              <div className="tech-scene">
+                <div className="tech-orbit orbit-one" />
+                <div className="tech-orbit orbit-two" />
+                <span className="tech-badge tech-react">React</span>
+                <span className="tech-badge tech-ts">TS</span>
+                <span className="tech-badge tech-tailwind">Tailwind</span>
+                <span className="tech-badge tech-firebase">Firebase</span>
+                <span className="tech-badge tech-next">Next</span>
+                <span className="tech-badge tech-vite">Vite</span>
+              </div>
             </div>
 
             <div className="grid gap-2 rounded-3xl border border-slate-800 bg-slate-950/80 p-5 text-sm text-slate-300 shadow-lg shadow-slate-950/20 sm:max-w-xs">
@@ -112,7 +147,7 @@ function App() {
                     Primary stack
                   </p>
                   <p className="mt-1 text-lg font-medium text-white">
-                    React · Tailwind · Vite
+                    Tailwind · Vite · NextJS · Typescript
                   </p>
                 </div>
               </div>
@@ -126,8 +161,8 @@ function App() {
                 "Tailwind",
                 "Firebase/Supabase",
                 "Vite",
-                "UI/UX",
-                "PHP",
+                "Typescript",
+                "NextJS",
                 "API Integration",
                 "Animations",
               ].map((skill) => (
@@ -166,9 +201,9 @@ function App() {
                 Selected work
               </h2>
               <p className="mt-3 text-base leading-7 text-slate-300">
-                Six polished projects that demonstrate my ability to deliver
-                refined front-end experiences for product teams, marketing
-                initiatives, and user-facing dashboards.
+                Polished projects that demonstrate my ability to deliver refined
+                front-end experiences for product teams, marketing initiatives,
+                and user-facing dashboards.
               </p>
             </div>
 
@@ -187,6 +222,11 @@ function App() {
                     </p>
                     <span className="text-sm text-slate-500">Web</span>
                   </div>
+                  <img
+                    src={project.image}
+                    alt={`${project.title} preview`}
+                    className="mt-5 h-48 w-full rounded-2xl border border-slate-800 object-cover"
+                  />
                   <h3 className="mt-4 text-xl font-semibold text-white">
                     {project.title}
                   </h3>
@@ -266,7 +306,7 @@ function App() {
                     Tools
                   </p>
                   <p className="mt-1 font-semibold text-white">
-                    React, Tailwind, Vite, Figma
+                    Tailwind, Vite, Figma, NextJS, Typescript
                   </p>
                 </div>
                 <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs uppercase tracking-[0.35em] text-cyan-300">
