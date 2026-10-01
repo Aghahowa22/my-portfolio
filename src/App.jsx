@@ -209,10 +209,10 @@ function App() {
               <p className=" text-sm uppercase tracking-[0.35em] text-cyan-300/75">
                 Front End Developer
               </p>
-              <h1 className="mt-3 text-5xl font-semibold tracking-tight text-white sm:text-6xl">
+              <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-6xl">
                 Modern interfaces that feel fast, intuitive, and polished.
               </h1>
-              <p className=" mt-4 max-w-xl text-lg leading-8 text-slate-300">
+              <p className=" mt-4 max-w-xl md:text-lg text-sm md:leading-8 leading-6 text-slate-300">
                 I build high-performance web experiences with Vite, NextJs and
                 Typescript, focusing on clean design, reliable architecture, and
                 delightful interactions.<br></br> <br></br>I specialize in
@@ -472,12 +472,12 @@ function App() {
               <p className="text-sm uppercase tracking-[0.3em] text-cyan-300/80">
                 Contact me
               </p>
-              <h2 className="mt-2 text-3xl font-semibold text-white">
-                Let&apos;s build something great together
+              <h2 className="mt-2 md:text-3xl text-2xl font-semibold text-white">
+                Let's build something great together
               </h2>
               <p className="mt-3 max-w-md text-base leading-7 text-slate-300">
                 Have a product idea, redesign requirement, or front-end role in
-                mind? Send a message and I&apos;ll get back to you with the next
+                mind? Send a message and I'll get back to you with the next
                 steps.
               </p>
 
@@ -488,10 +488,10 @@ function App() {
                     href={detail.href}
                     className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-left text-sm text-slate-300 transition hover:border-cyan-500/40"
                   >
-                    <span className="uppercase tracking-[0.25em] text-slate-500">
+                    <span className="uppercase tracking-[0.25em] md:text-sm text-xs text-slate-500">
                       {detail.label}
                     </span>
-                    <span className="font-medium text-white">
+                    <span className="font-medium md:text-sm text-xs text-white">
                       {detail.value}
                     </span>
                   </a>
@@ -574,7 +574,7 @@ function App() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-5 py-3 text-xs font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-cyan-600/70 disabled:text-slate-900/80 cursor-pointer"
+                  className="inline-flex items-center justify-center  gap-2 rounded-full bg-cyan-500 px-5 py-3 text-xs font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-cyan-600/70 disabled:text-slate-900/80 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
