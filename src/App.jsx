@@ -1,5 +1,13 @@
 import "./App.css";
-import { ArrowRight, ExternalLink, Mail, Sparkles } from "lucide-react";
+import { useState } from "react";
+import {
+  ArrowRight,
+  ExternalLink,
+  Loader2,
+  Mail,
+  Send,
+  Sparkles,
+} from "lucide-react";
 
 const projects = [
   {
@@ -82,12 +90,121 @@ const projects = [
   },
 ];
 
+const contactDetails = [
+  {
+    label: "Email",
+    value: "raymondedosa400@gmail.com",
+    href: "mailto:raymondedosa400@gmail.com",
+  },
+  {
+    label: "Location",
+    value: "Nigeria",
+    href: "#contact",
+  },
+  {
+    label: "Response time",
+    value: "Within 24 hours",
+    href: "#contact",
+  },
+];
+
+const initialFormState = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
+
 function App() {
+  const [formDatas, setFormDatas] = useState(initialFormState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [result, setResult] = useState("");
+
+  const clearResult = () => {
+    setResult("");
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormDatas((previousState) => ({
+      ...previousState,
+      [name]: value,
+    }));
+
+    if (result) {
+      clearResult();
+    }
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setResult("");
+
+    try {
+      const formData = new FormData(event.target);
+      formData.append("access_key", "86d8e5ae-6f5e-4295-8466-f9b4adf4e304");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      const message = data.success
+        ? "Thanks! Your message has been received, we will contact you shortly."
+        : "Error sending message. try again later.";
+
+      setResult(message);
+
+      if (data.success) {
+        setFormDatas(initialFormState);
+      }
+
+      window.setTimeout(() => {
+        clearResult();
+      }, 5000);
+    } catch {
+      const message = "Something went wrong try again later.";
+      setResult(message);
+      window.setTimeout(() => {
+        clearResult();
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  //   const emailAddress = "raymondedosa400@gmail.com";
+  //   const emailSubject = `Portfolio inquiry from ${formData.name || "a potential client"}`;
+  //   const emailBody = [
+  //     `Name: ${formData.name}`,
+  //     `Email: ${formData.email}`,
+  //     `Subject: ${formData.subject}`,
+  //     "",
+  //     "Message:",
+  //     formData.message,
+  //   ].join("\n");
+
+  //   window.location.href = `mailto:${emailAddress}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+  //   setIsSubmitted(true);
+  //   setFormData(initialFormState);
+  // };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <main className="mx-auto max-w-7xl px-6 py-8 lg:px-8 lg:py-10">
         <header className="flex flex-col gap-6 rounded-4xl border border-slate-800 bg-slate-900/90 p-8 shadow-xl shadow-slate-950/40 lg:p-10">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex flex-col gap-6 lg:flex-row  lg:justify-between">
             <div className="max-w-2xl">
               <p className=" text-sm uppercase tracking-[0.35em] text-cyan-300/75">
                 Front End Developer
@@ -96,9 +213,14 @@ function App() {
                 Modern interfaces that feel fast, intuitive, and polished.
               </h1>
               <p className=" mt-4 max-w-xl text-lg leading-8 text-slate-300">
-                I build high-performance web experiences with React and
-                Tailwind, focusing on clean design, reliable architecture, and
-                delightful interactions.
+                I build high-performance web experiences with Vite, NextJs and
+                Typescript, focusing on clean design, reliable architecture, and
+                delightful interactions.<br></br> <br></br>I specialize in
+                building fast, secure, and scalable web applications using
+                modern Backend-as-a-Service (BaaS) platforms. Instead of
+                managing heavy traditional servers, I leverage the unique
+                strengths of both Firebase and Supabase to match the exact
+                architectural needs of each project.
               </p>
             </div>
 
@@ -112,6 +234,7 @@ function App() {
                 <span className="tech-badge tech-firebase">Firebase</span>
                 <span className="tech-badge tech-next">Next</span>
                 <span className="tech-badge tech-vite">Vite</span>
+                <span className="tech-badge tech-vite">Supabase</span>
               </div>
             </div>
 
@@ -182,7 +305,7 @@ function App() {
                 View Projects <ArrowRight size={16} />
               </a>
               <a
-                href="mailto:raymondedosa400@gmail.com"
+                href="#contact"
                 className="inline-flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/90 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:border-cyan-400"
               >
                 Contact me <Mail size={16} />
@@ -246,6 +369,8 @@ function App() {
                   <div className="flex items-center  gap-10">
                     <a
                       href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="mt-8 inline-flex items-center  text-sm font-semibold text-cyan-300 transition group-hover:text-cyan-200"
                     >
                       View case study <ExternalLink size={16} />
@@ -253,6 +378,8 @@ function App() {
 
                     <a
                       href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="ml-4 mt-8 inline-flex  items-center gap-2 text-sm font-semibold text-cyan-300 transition group-hover:text-cyan-200"
                     >
                       <svg
@@ -306,10 +433,10 @@ function App() {
                     Tools
                   </p>
                   <p className="mt-1 font-semibold text-white">
-                    Tailwind, Vite, Figma, NextJS, Typescript
+                    Tailwind . Vite . Figma . NextJS . Typescript
                   </p>
                 </div>
-                <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs uppercase tracking-[0.35em] text-cyan-300">
+                <span className="rounded-full  text-center bg-cyan-500/10 px-3 py-1 text-xs uppercase tracking-[0.35em] text-cyan-300">
                   Fast UI
                 </span>
               </div>
@@ -327,71 +454,152 @@ function App() {
               <a
                 href="mailto:raymondedosa400@gmail.com"
                 className="mt-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-2 text-xs font-semibold text-cyan-200 transition hover:bg-cyan-500/20"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Say hello <ArrowRight size={16} />
               </a>
             </div>
           </aside>
+        </section>
 
-          {/* <aside className="space-y-5 rounded-4xl border border-slate-800 bg-slate-900/85 p-6 shadow-xl shadow-slate-950/20">
+        <section
+          id="contact"
+          className="mt-8 rounded-4xl border border-slate-800 bg-slate-900/85 p-6 shadow-xl shadow-slate-950/20 lg:p-8"
+        >
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-cyan-300/80">
-                About me
+                Contact me
               </p>
-              <h2 className="mt-2 text-2xl font-semibold text-white">
-                Design-driven development
+              <h2 className="mt-2 text-3xl font-semibold text-white">
+                Let&apos;s build something great together
               </h2>
-              <p className="mt-3 text-sm leading-6 text-slate-300">
-                I help product teams turn ideas into polished UI. My focus is on
-                performance, scalable component systems, and interfaces that
-                feel natural across devices.
+              <p className="mt-3 max-w-md text-base leading-7 text-slate-300">
+                Have a product idea, redesign requirement, or front-end role in
+                mind? Send a message and I&apos;ll get back to you with the next
+                steps.
               </p>
+
+              <div className="mt-6 space-y-3">
+                {contactDetails.map((detail) => (
+                  <a
+                    key={detail.label}
+                    href={detail.href}
+                    className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-950/80 px-4 py-3 text-left text-sm text-slate-300 transition hover:border-cyan-500/40"
+                  >
+                    <span className="uppercase tracking-[0.25em] text-slate-500">
+                      {detail.label}
+                    </span>
+                    <span className="font-medium text-white">
+                      {detail.value}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
 
-            <div className="grid gap-3 rounded-3xl bg-slate-950/90 p-4">
-              <div className="flex items-center justify-between rounded-3xl border border-slate-800 bg-slate-900/90 p-3">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
-                    Role
-                  </p>
-                  <p className="mt-1 font-semibold text-white">
-                    Lead Front End Developer
-                  </p>
-                </div>
-                <Sparkles size={24} className="text-cyan-300" />
+            <form
+              // onSubmit={handleSubmit}
+              onSubmit={onSubmit}
+              className="rounded-3xl border border-slate-800 bg-slate-950/85 p-5 sm:p-6"
+            >
+              <div className="grid gap-5 sm:grid-cols-2">
+                <label className="block text-sm text-slate-300">
+                  <span className="mb-2 block text-xs uppercase tracking-[0.25em] text-slate-500">
+                    Name
+                  </span>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formDatas.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full rounded-2xl border border-slate-700 bg-slate-900/80 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-60"
+                  />
+                </label>
+
+                <label className="block text-sm text-slate-300">
+                  <span className="mb-2 block text-xs uppercase tracking-[0.25em] text-slate-500">
+                    Email
+                  </span>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formDatas.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full rounded-2xl border border-slate-700 bg-slate-900/80 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-60"
+                  />
+                </label>
               </div>
-              <div className="flex items-center justify-between rounded-3xl border border-slate-800 bg-slate-900/90 p-4">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
-                    Tools
-                  </p>
-                  <p className="mt-1 font-semibold text-white">
-                    React, Tailwind, Vite, Figma
-                  </p>
-                </div>
-                <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs uppercase tracking-[0.35em] text-cyan-300">
-                  Fast UI
+
+              <label className="mt-5 block text-sm text-slate-300">
+                <span className="mb-2 block text-xs uppercase tracking-[0.25em] text-slate-500">
+                  Subject
                 </span>
-              </div>
-            </div>
+                <input
+                  type="text"
+                  name="subject"
+                  value={formDatas.subject}
+                  onChange={handleChange}
+                  placeholder="Project inquiry"
+                  required
+                  disabled={isSubmitting}
+                  className="w-full rounded-2xl border border-slate-700 bg-slate-900/80 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-60"
+                />
+              </label>
 
-            <div className="rounded-3xl border border-slate-800 bg-slate-950/90 p-4 text-sm text-slate-300">
-              <p className="text-xs uppercase tracking-[0.35em] text-cyan-300/80">
-                Let's collaborate
-              </p>
-              <p className="mt-3 leading-6 text-slate-300">
-                I'm available for front-end projects, product launches, and
-                interface upgrades. Let's talk about how I can help bring your
-                next experience to life.
-              </p>
-              <a
-                href="mailto:raymondedosa400@gmail.com"
-                className="mt-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-2 text-xs font-semibold text-cyan-200 transition hover:bg-cyan-500/20"
-              >
-                Say hello <ArrowRight size={16} />
-              </a>
-            </div>
-          </aside> */}
+              <label className="mt-5 block text-sm text-slate-300">
+                <span className="mb-2 block text-xs uppercase tracking-[0.25em] text-slate-500">
+                  Message
+                </span>
+                <textarea
+                  name="message"
+                  value={formDatas.message}
+                  onChange={handleChange}
+                  placeholder="Tell me a bit about your project..."
+                  rows={6}
+                  required
+                  disabled={isSubmitting}
+                  className="w-full resize-none rounded-2xl border border-slate-700 bg-slate-900/80 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-60"
+                />
+              </label>
+
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-500 px-5 py-3 text-xs font-semibold text-slate-950 transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-cyan-600/70 disabled:text-slate-900/80 cursor-pointer"
+                >
+                  {isSubmitting ? (
+                    <>
+                      Sending...
+                      <Loader2 size={16} className="animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                    
+                       Send message <Send size={16} />
+                     
+                    </>
+                  )}
+                </button>
+
+                {/* {isSubmitted && (
+                  <p className="text-sm text-cyan-300">
+                    Thanks! Your email app has been opened.
+                  </p>
+                )} */}
+
+                {result && <p className="text-xs text-cyan-300">{result}</p>}
+              </div>
+            </form>
+          </div>
         </section>
       </main>
     </div>
