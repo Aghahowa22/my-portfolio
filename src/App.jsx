@@ -85,7 +85,9 @@ const projects = [
     tags: ["NextJS", "Typescript", "Tailwind", " authentication", "PostgreSQL"],
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    link: "https://orange-circle-internship-project2-g-eosin.vercel.app/",
+    // link: "https://orange-circle-internship-project2-g-eosin.vercel.app/",
+    link: "https://nduledger.xyz/",
+    
     githubLink: "https://github.com/Aghahowa22/Ledgerlite.git",
   },
 ];
